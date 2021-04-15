@@ -4,11 +4,10 @@ Reports of OHLC, Change, Volume and VWAP of BTCUSD and ETHBTC  with data from Ge
 
 -------------Task 2-----------------
 
-# Please describe how you would approach assessing the number of confirmations that a Digital Asset exchange like ErisX should wait before it considers a transaction (deposit to the exchange) in the BTC blockchain as valid in order to minimize the risk of being affected by a potential reorganization in the blockchain but also not having a negative impact on the user experience making the user wait for too long.
+Q: Please describe how you would approach assessing the number of confirmations that a Digital Asset exchange like ErisX should wait before it considers a transaction (deposit to the exchange) in the BTC blockchain as valid in order to minimize the risk of being affected by a potential reorganization in the blockchain but also not having a negative impact on the user experience making the user wait for too long.
+In other words, what measures, data and calculations would you look at to determine how many blockchain confirmations should an exchange wait when a client makes a BTC deposit before making the funds available for a client to trade with.
 
-# In other words, what measures, data and calculations would you look at to determine how many blockchain confirmations should an exchange wait when a client makes a BTC deposit before making the funds available for a client to trade with.
-
-The way transactions are processed on the Bitcoin Blockchain is through Mining. Once the client sends a transaction out, it enters into the Mempool, where it awaits to be picked up by a Miner. Miners pick the transactions with the highest fee and smallest size first. Because they have a block size limit of 1MB and want to earn the highest reward for that block by filling it with as many high-fee transactions as possible. The higher the transaction fee the client appoints, the quicker the processing time will be. 
+A: The way transactions are processed on the Bitcoin Blockchain is through Mining. Once the client sends a transaction out, it enters into the Mempool, where it awaits to be picked up by a Miner. Miners pick the transactions with the highest fee and smallest size first. Because they have a block size limit of 1MB and want to earn the highest reward for that block by filling it with as many high-fee transactions as possible. The higher the transaction fee the client appoints, the quicker the processing time will be. 
 However for reasons of security, the Bitcoin blockchain has a mechanism called proof-of-work in place, which makes miners solve a cryptographic challenge in order to get their block approved. This serves the purpose of keeping the network safe of attackers who try to alter the blockchains history by intentionally rises the processing time of 1 block to 10 minutes. 
 
 While other blockchains have different consensus mechanisms that allow for faster block processing (and can require up to 20 block confirmations to consider a transaction safe), the Bitcoin blockchain is still amongst the slowest. In the Bitcoin blockchain the generally agreed-upon number of blocks that it takes to consider a transaction immutable is only 6 blocks (or 60min). Having 6 confirmed blocks after the client‘s block makes sure that the client‘s block won‘t be a stale block and technically makes it very difficult for any malevolent group to outspeed the honest miners and create a longer ‚fake‘ chain.
@@ -21,7 +20,7 @@ The measures I would look at to determine how many blockchain confirmations an e
 
 - Average confirmation requirements of other exchanges (Coinbase:3, Kraken:4, Binance:1): Most big exchanges seem to require less block confirmations than the Bitcoin blockchain itsself. They take the risk in order to give their customers the convenience of shorter waiting times for deposits. 
 
--Dangers the exchange faces for not getting enough block confirmations:
+- Dangers the exchange faces for not getting enough block confirmations:
 The receiver could spend money that isn‘t his and the exchange would have to carry the costs of this as transactions on the blockchain are irreversible.
 Because the exchange technically has not received the Bitcoin before 6 block transactions have passed, and if they allow deposit and spending before that, they are basically lending the receiver a Bitcoin to bridge the time gap between sending and receiving. So the exchange would need a marginal reserve of liquidity to enable this.
 Another consideration is that in this gap time the price of Bitcoin could considerably drop, so the exchange would lose money.
